@@ -1,0 +1,149 @@
+# 🌱 Natureza Inteligente
+
+### Tecnologia e conscientização a favor do meio ambiente
+
+## 📌 Sobre o projeto
+
+O **Natureza Inteligente** é um projeto de extensão universitária que tem como objetivo unir tecnologia e educação ambiental para incentivar a preservação da natureza e conscientizar a população sobre a importância de atitudes sustentáveis.
+
+A proposta consiste no desenvolvimento de um sistema de monitoramento ambiental utilizando uma placa ESP32 e sensores capazes de coletar informações do ambiente, como temperatura, umidade do ar e umidade do solo.
+
+Os dados coletados poderão ser armazenados em um banco de dados e apresentados em um site por meio de gráficos, facilitando a visualização e a compreensão das informações.
+
+Além do desenvolvimento tecnológico, o projeto inclui ações presenciais de conscientização ambiental por meio da distribuição de panfletos informativos nas ruas, incentivando a população a adotar práticas sustentáveis no cotidiano.
+
+## 🎯 Objetivos
+
+- Desenvolver um protótipo de monitoramento ambiental utilizando ESP32 e sensores.
+- Coletar e armazenar dados ambientais em um banco de dados.
+- Criar uma landing page para apresentar o projeto e divulgar informações ambientais.
+- Desenvolver gráficos para facilitar a interpretação dos dados coletados.
+- Promover a conscientização ambiental por meio de panfletagem e ações educativas.
+- Incentivar a participação da comunidade na preservação do meio ambiente.
+- Demonstrar como a tecnologia pode contribuir para a educação e o monitoramento ambiental.
+
+## 💻 Funcionalidades do site
+
+Atualmente, a landing page apresenta:
+
+- **Apresentação do projeto:** explicação da iniciativa e de sua importância.
+- **Monitoramento ambiental:** descrição do funcionamento dos sensores e do ESP32.
+- **Painel demonstrativo:** apresentação visual de indicadores ambientais e gráficos ilustrativos.
+- **Educação ambiental:** dicas sobre economia de água, preservação de áreas verdes, reciclagem e consumo consciente.
+- **Conscientização comunitária:** divulgação da importância da participação da população.
+- **Seção de contato:** espaço para incentivar o envolvimento da comunidade com o projeto.
+
+> **Observação:** o painel de monitoramento utiliza valores fictícios para demonstração visual. A integração com os sensores físicos, a API e o banco de dados ainda precisa ser implementada.
+
+## 🛠️ Tecnologias utilizadas
+
+### Desenvolvimento web
+- HTML5 — estruturação do conteúdo.
+- CSS3 — estilização, identidade visual e responsividade.
+- JavaScript — interatividade e funcionamento do menu para dispositivos móveis.
+
+### Hardware e monitoramento
+- ESP32 — coleta e transmissão dos dados por Wi-Fi.
+- Sensores ambientais — obtenção de informações sobre as condições do ambiente.
+
+### Tecnologias planejadas para a integração
+- Python — desenvolvimento da API para receber e disponibilizar os dados.
+- SQL — armazenamento e consulta das medições ambientais.
+- Biblioteca de gráficos JavaScript — visualização do histórico de medições.
+
+## 🌎 Ação de extensão universitária
+
+Uma parte importante do projeto é a aproximação entre a tecnologia desenvolvida e a comunidade.
+
+Para isso, será realizada uma ação de conscientização ambiental por meio da distribuição de panfletos informativos em locais públicos, respeitando as regras locais aplicáveis.
+
+Os materiais apresentarão orientações práticas sobre:
+
+- Economia de água e energia.
+- Descarte correto de resíduos.
+- Reciclagem e destinação de resíduos eletrônicos.
+- Preservação de áreas verdes.
+- Importância da tecnologia no acompanhamento das condições ambientais.
+
+A iniciativa busca compartilhar conhecimento, estimular mudanças de hábitos e demonstrar como projetos tecnológicos podem contribuir para questões ambientais.
+
+## 📂 Estrutura do projeto
+
+```text
+Natureza-Inteligente/
+│
+├── index.html       # Página principal do site
+├── style.css        # Estilos e identidade visual
+├── script.js        # Interatividade da página
+└── README.md        # Documentação do projeto
+```
+
+## 🚀 Como executar o projeto
+
+### 1. Baixe ou clone o repositório
+
+Se estiver utilizando o GitHub, execute:
+
+```bash
+git clone URL_DO_SEU_REPOSITORIO
+```
+
+Substitua `URL_DO_SEU_REPOSITORIO` pelo endereço do seu repositório.
+
+### 2. Acesse a pasta
+
+```bash
+cd Natureza-Inteligente
+```
+
+### 3. Abra o projeto
+
+Abra a pasta no Visual Studio Code e execute o arquivo `index.html` em um navegador.
+
+Para facilitar o desenvolvimento, você também pode utilizar a extensão Live Server.
+
+**Requisito:** é necessária uma conexão com a internet para carregar as fontes e imagens externas utilizadas na página.
+
+## 📊 Próximas etapas
+
+O desenvolvimento poderá continuar com as seguintes melhorias:
+
+1. Montagem do circuito com ESP32 e sensores ambientais.
+2. Programação do ESP32 para realizar as leituras dos sensores.
+3. Desenvolvimento de uma API em Python para receber os dados.
+4. Criação do banco de dados para armazenar as medições.
+5. Integração do site com a API e o banco de dados.
+6. Substituição dos valores demonstrativos por dados reais.
+7. Implementação de gráficos dinâmicos e histórico de medições.
+8. Realização da panfletagem e avaliação dos resultados da ação educativa.
+
+## 📈 Indicadores de impacto
+
+Para avaliar os resultados da atividade de extensão, poderão ser utilizados os seguintes indicadores:
+
+- Quantidade de panfletos distribuídos.
+- Número estimado de pessoas alcançadas.
+- Participação da comunidade nas ações educativas.
+- Quantidade de acessos ao site.
+- Funcionamento e quantidade de registros gerados pelo sistema de monitoramento.
+- Feedback dos participantes sobre as informações ambientais divulgadas.
+
+Os resultados deverão ser registrados durante a execução do projeto, evitando apresentar estimativas como se fossem resultados já alcançados.
+
+## 🤝 Contribuição
+
+O projeto tem caráter educativo e busca demonstrar como conhecimentos de programação, eletrônica e banco de dados podem ser aplicados em iniciativas de conscientização ambiental.
+
+Sugestões de melhorias e novas funcionalidades são bem-vindas.
+
+## 🌿 Considerações finais
+
+O **Natureza Inteligente** busca aproximar a tecnologia da sociedade, utilizando o monitoramento ambiental e a educação para incentivar atitudes sustentáveis.
+
+A iniciativa demonstra que a tecnologia não precisa estar voltada apenas à automação e ao desenvolvimento de sistemas comerciais: ela também pode ser utilizada para compartilhar conhecimento, estimular a responsabilidade ambiental e contribuir para uma comunidade mais consciente.
+
+---
+
+**Projeto de extensão universitária — Natureza Inteligente**
+
+*Monitorar hoje. Preservar sempre.*
