@@ -1,149 +1,631 @@
-# 🌱 Natureza Inteligente
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Natureza Inteligente - Tecnologia que protege a natureza</title>
 
-### Tecnologia e conscientização a favor do meio ambiente
+  <!-- Fontes do Google: Fraunces nos títulos e Nunito Sans no texto corrido -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-## 📌 Sobre o projeto
+  <style>
+    /* ==========================================================
+       CORES (mexa aqui se quiser mudar o tema do site inteiro)
+       ========================================================== */
+    :root {
+      --fundo: #f6f8f1;
+      --card: #ffffff;
+      --texto: #12301c;
+      --texto-suave: #4a6252;
+      --verde-escuro: #0d3a1d;
+      --verde-claro: #8fe36a;
+      --verde-medio: #2f8f3f;
+      --verde-fundo: #e3f2d6;
+      --borda: #d3e2c8;
+    }
 
-O **Natureza Inteligente** é um projeto de extensão universitária que tem como objetivo unir tecnologia e educação ambiental para incentivar a preservação da natureza e conscientizar a população sobre a importância de atitudes sustentáveis.
+    /* Modo escuro: só vale se o aparelho da pessoa estiver nesse modo */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fundo: #0b1a10;
+        --card: #12281a;
+        --texto: #e8f3e0;
+        --texto-suave: #a5bfa9;
+        --verde-escuro: #06150b;
+        --verde-fundo: #173322;
+        --borda: #244630;
+      }
+    }
 
-A proposta consiste no desenvolvimento de um sistema de monitoramento ambiental utilizando uma placa ESP32 e sensores capazes de coletar informações do ambiente, como temperatura, umidade do ar e umidade do solo.
+    /* ==========================================================
+       BASE
+       ========================================================== */
+    * {
+      box-sizing: border-box;
+    }
 
-Os dados coletados poderão ser armazenados em um banco de dados e apresentados em um site por meio de gráficos, facilitando a visualização e a compreensão das informações.
+    html {
+      scroll-behavior: smooth; /* rolagem suave ao clicar no menu */
+    }
 
-Além do desenvolvimento tecnológico, o projeto inclui ações presenciais de conscientização ambiental por meio da distribuição de panfletos informativos nas ruas, incentivando a população a adotar práticas sustentáveis no cotidiano.
+    body {
+      margin: 0;
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
 
-## 🎯 Objetivos
+    h1, h2, h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      line-height: 1.1;
+      margin: 0;
+    }
 
-- Desenvolver um protótipo de monitoramento ambiental utilizando ESP32 e sensores.
-- Coletar e armazenar dados ambientais em um banco de dados.
-- Criar uma landing page para apresentar o projeto e divulgar informações ambientais.
-- Desenvolver gráficos para facilitar a interpretação dos dados coletados.
-- Promover a conscientização ambiental por meio de panfletagem e ações educativas.
-- Incentivar a participação da comunidade na preservação do meio ambiente.
-- Demonstrar como a tecnologia pode contribuir para a educação e o monitoramento ambiental.
+    a {
+      color: inherit;
+    }
 
-## 💻 Funcionalidades do site
+    /* Contorno visível pra quem navega com o teclado (Tab) */
+    :focus-visible {
+      outline: 3px solid var(--verde-claro);
+      outline-offset: 3px;
+    }
 
-Atualmente, a landing page apresenta:
+    /* Caixa central que limita a largura do conteúdo */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
 
-- **Apresentação do projeto:** explicação da iniciativa e de sua importância.
-- **Monitoramento ambiental:** descrição do funcionamento dos sensores e do ESP32.
-- **Painel demonstrativo:** apresentação visual de indicadores ambientais e gráficos ilustrativos.
-- **Educação ambiental:** dicas sobre economia de água, preservação de áreas verdes, reciclagem e consumo consciente.
-- **Conscientização comunitária:** divulgação da importância da participação da população.
-- **Seção de contato:** espaço para incentivar o envolvimento da comunidade com o projeto.
+    section {
+      padding: 80px 0;
+    }
 
-> **Observação:** o painel de monitoramento utiliza valores fictícios para demonstração visual. A integração com os sensores físicos, a API e o banco de dados ainda precisa ser implementada.
+    h2 {
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
 
-## 🛠️ Tecnologias utilizadas
+    .intro {
+      max-width: 62ch;
+      color: var(--texto-suave);
+      font-size: 19px;
+    }
 
-### Desenvolvimento web
-- HTML5 — estruturação do conteúdo.
-- CSS3 — estilização, identidade visual e responsividade.
-- JavaScript — interatividade e funcionamento do menu para dispositivos móveis.
+    /* Botão verde usado no topo e no final da página */
+    .botao {
+      display: inline-block;
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+      font-weight: 700;
+      padding: 14px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      margin-top: 26px;
+    }
 
-### Hardware e monitoramento
-- ESP32 — coleta e transmissão dos dados por Wi-Fi.
-- Sensores ambientais — obtenção de informações sobre as condições do ambiente.
+    /* ==========================================================
+       TOPO (menu + título principal)
+       ========================================================== */
+    .topo {
+      background:
+        radial-gradient(ellipse at 80% -10%, #4f9a3a 0, transparent 55%),
+        linear-gradient(170deg, #0d3a1d, #06220f);
+      color: #fff;
+      padding-bottom: 90px;
+    }
 
-### Tecnologias planejadas para a integração
-- Python — desenvolvimento da API para receber e disponibilizar os dados.
-- SQL — armazenamento e consulta das medições ambientais.
-- Biblioteca de gráficos JavaScript — visualização do histórico de medições.
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 22px;
+    }
 
-## 🌎 Ação de extensão universitária
+    .menu b {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+    }
 
-Uma parte importante do projeto é a aproximação entre a tecnologia desenvolvida e a comunidade.
+    .menu a {
+      text-decoration: none;
+      color: #e6f5dc;
+      font-weight: 700;
+      font-size: 15px;
+      margin-left: 20px;
+    }
 
-Para isso, será realizada uma ação de conscientização ambiental por meio da distribuição de panfletos informativos em locais públicos, respeitando as regras locais aplicáveis.
+    /* Duas colunas: texto à esquerda, desenho do broto à direita */
+    .topo .container {
+      padding-top: 60px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
 
-Os materiais apresentarão orientações práticas sobre:
+    .topo small {
+      font-size: 19px;
+      color: #cfeebf;
+    }
 
-- Economia de água e energia.
-- Descarte correto de resíduos.
-- Reciclagem e destinação de resíduos eletrônicos.
-- Preservação de áreas verdes.
-- Importância da tecnologia no acompanhamento das condições ambientais.
+    .topo h1 {
+      font-size: clamp(40px, 7vw, 76px);
+      font-weight: 800;
+      margin: 14px 0 22px;
+    }
 
-A iniciativa busca compartilhar conhecimento, estimular mudanças de hábitos e demonstrar como projetos tecnológicos podem contribuir para questões ambientais.
+    .topo h1 span {
+      color: var(--verde-claro);
+    }
 
-## 📂 Estrutura do projeto
+    .topo p {
+      max-width: 46ch;
+      color: #dcefd2;
+      font-size: 19px;
+    }
 
-```text
-Natureza-Inteligente/
-│
-├── index.html       # Página principal do site
-├── style.css        # Estilos e identidade visual
-├── script.js        # Interatividade da página
-└── README.md        # Documentação do projeto
-```
+    .broto {
+      width: 100%;
+      max-width: 340px;
+      justify-self: center;
+    }
 
-## 🚀 Como executar o projeto
+    /* ==========================================================
+       O PROJETO + PROBLEMAS
+       ========================================================== */
+    .subtitulo {
+      margin-top: 56px;
+      font-size: clamp(26px, 4vw, 36px);
+    }
 
-### 1. Baixe ou clone o repositório
+    .problemas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
 
-Se estiver utilizando o GitHub, execute:
+    .problema {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 24px;
+    }
 
-```bash
-git clone URL_DO_SEU_REPOSITORIO
-```
+    .problema p {
+      margin: 12px 0 0;
+      font-weight: 600;
+    }
 
-Substitua `URL_DO_SEU_REPOSITORIO` pelo endereço do seu repositório.
+    /* Faixa de destaque: "Pequenas atitudes..." */
+    .destaque {
+      background: var(--verde-fundo);
+      border-radius: 22px;
+      padding: 26px 30px;
+      margin-top: 30px;
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
 
-### 2. Acesse a pasta
+    /* Tamanho padrão dos ícones de toda a página */
+    .problema svg,
+    .passo svg,
+    .dica svg {
+      width: 44px;
+      height: 44px;
+      flex: none;
+    }
 
-```bash
-cd Natureza-Inteligente
-```
+    /* ==========================================================
+       COMO FUNCIONA (fundo verde escuro)
+       ========================================================== */
+    .como {
+      background: var(--verde-escuro);
+      color: #fff;
+    }
 
-### 3. Abra o projeto
+    .como .intro {
+      color: #cfe3c8;
+    }
 
-Abra a pasta no Visual Studio Code e execute o arquivo `index.html` em um navegador.
+    .passos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px 40px;
+      margin-top: 40px;
+    }
 
-Para facilitar o desenvolvimento, você também pode utilizar a extensão Live Server.
+    .passo {
+      display: flex;
+      gap: 18px;
+    }
 
-**Requisito:** é necessária uma conexão com a internet para carregar as fontes e imagens externas utilizadas na página.
+    .passo svg {
+      background: var(--verde-claro);
+      color: #0d3a1d;
+      border-radius: 50%;
+      padding: 10px;
+    }
 
-## 📊 Próximas etapas
+    .passo h3 {
+      font-size: 21px;
+      color: var(--verde-claro);
+      margin-bottom: 6px;
+    }
 
-O desenvolvimento poderá continuar com as seguintes melhorias:
+    .passo p {
+      margin: 0;
+      color: #d5e8cd;
+      font-size: 16px;
+    }
 
-1. Montagem do circuito com ESP32 e sensores ambientais.
-2. Programação do ESP32 para realizar as leituras dos sensores.
-3. Desenvolvimento de uma API em Python para receber os dados.
-4. Criação do banco de dados para armazenar as medições.
-5. Integração do site com a API e o banco de dados.
-6. Substituição dos valores demonstrativos por dados reais.
-7. Implementação de gráficos dinâmicos e histórico de medições.
-8. Realização da panfletagem e avaliação dos resultados da ação educativa.
+    /* Caixa com o desenho da placa ESP32 */
+    .hardware {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      margin-top: 50px;
+      padding: 26px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 22px;
+    }
 
-## 📈 Indicadores de impacto
+    .hardware svg {
+      width: 150px;
+      flex: none;
+    }
 
-Para avaliar os resultados da atividade de extensão, poderão ser utilizados os seguintes indicadores:
+    .hardware p {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+    }
 
-- Quantidade de panfletos distribuídos.
-- Número estimado de pessoas alcançadas.
-- Participação da comunidade nas ações educativas.
-- Quantidade de acessos ao site.
-- Funcionamento e quantidade de registros gerados pelo sistema de monitoramento.
-- Feedback dos participantes sobre as informações ambientais divulgadas.
+    /* ==========================================================
+       DICAS
+       ========================================================== */
+    .dicas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      margin-top: 38px;
+    }
 
-Os resultados deverão ser registrados durante a execução do projeto, evitando apresentar estimativas como se fossem resultados já alcançados.
+    .dica {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 2px solid var(--borda);
+    }
 
-## 🤝 Contribuição
+    .dica svg {
+      background: var(--verde-escuro);
+      color: #fff;
+      border-radius: 50%;
+      padding: 10px;
+    }
 
-O projeto tem caráter educativo e busca demonstrar como conhecimentos de programação, eletrônica e banco de dados podem ser aplicados em iniciativas de conscientização ambiental.
+    .dica h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
 
-Sugestões de melhorias e novas funcionalidades são bem-vindas.
+    .dica p {
+      margin: 0;
+      color: var(--texto-suave);
+      font-size: 16px;
+    }
 
-## 🌿 Considerações finais
+    /* ==========================================================
+       CHAMADA FINAL + RODAPÉ
+       ========================================================== */
+    .secao-final {
+      padding-top: 0; /* cola na seção de cima */
+    }
 
-O **Natureza Inteligente** busca aproximar a tecnologia da sociedade, utilizando o monitoramento ambiental e a educação para incentivar atitudes sustentáveis.
+    .chamada {
+      background: linear-gradient(170deg, #0d3a1d, #164d28);
+      color: #fff;
+      text-align: center;
+      border-radius: 28px;
+      padding: 64px 24px;
+    }
 
-A iniciativa demonstra que a tecnologia não precisa estar voltada apenas à automação e ao desenvolvimento de sistemas comerciais: ela também pode ser utilizada para compartilhar conhecimento, estimular a responsabilidade ambiental e contribuir para uma comunidade mais consciente.
+    .chamada h2 {
+      font-style: italic;
+    }
 
----
+    .chamada p {
+      color: #d5e8cd;
+      max-width: 48ch;
+      margin: 0 auto;
+    }
 
-**Projeto de extensão universitária — Natureza Inteligente**
+    footer {
+      padding: 36px 22px;
+      text-align: center;
+      color: var(--texto-suave);
+      font-size: 15px;
+    }
 
-*Monitorar hoje. Preservar sempre.*
+    footer b {
+      display: block;
+      color: var(--texto);
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+    }
+
+    /* ==========================================================
+       CELULAR (telas de até 760px)
+       ========================================================== */
+    @media (max-width: 760px) {
+      /* tudo em uma coluna só */
+      .topo .container,
+      .passos,
+      .problemas {
+        grid-template-columns: 1fr;
+      }
+
+      .broto {
+        max-width: 200px;
+      }
+
+      .hardware {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      /* esconde os links do menu pra não apertar */
+      .menu a {
+        display: none;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= TOPO ================= -->
+  <header class="topo">
+    <nav class="menu" aria-label="Principal">
+      <b>Natureza Inteligente</b>
+      <div>
+        <a href="#projeto">O projeto</a>
+        <a href="#como">Como funciona</a>
+        <a href="#dicas">Dicas</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div>
+        <small>Juntos por um ambiente melhor</small>
+        <h1>Tecnologia que protege a <span>natureza</span></h1>
+        <p>
+          Tecnologia e pessoas juntas por um futuro mais verde. Monitoramos
+          temperatura e umidade da nossa cidade para cuidar melhor do solo,
+          da água e das áreas verdes.
+        </p>
+        <a class="botao" href="#acesse">Acessar o site do projeto</a>
+      </div>
+
+      <!-- Desenho do broto (SVG feito à mão, sem imagem externa) -->
+      <svg class="broto" viewBox="0 0 200 240" role="img" aria-label="Broto crescendo da terra">
+        <path d="M100 220V120" stroke="#8fe36a" stroke-width="6" stroke-linecap="round"/>
+        <path d="M100 130C60 135 30 105 28 62 70 60 98 90 100 130Z" fill="#5fc13f"/>
+        <path d="M100 110C100 60 130 28 176 24 180 72 150 104 100 110Z" fill="#8fe36a"/>
+        <path d="M30 222c20-24 120-24 140 0z" fill="#5a3b25"/>
+        <!-- símbolo de Wi-Fi no alto -->
+        <circle cx="100" cy="14" r="4" fill="#cfeebf"/>
+        <path d="M84 10a22 22 0 0 1 32 0" stroke="#cfeebf" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= O PROJETO ================= -->
+    <section id="projeto">
+      <div class="container">
+        <h2>O que é o projeto?</h2>
+        <p class="intro">
+          O Natureza Inteligente é um projeto de extensão universitária que une
+          tecnologia, monitoramento ambiental e conscientização para ajudar a
+          preservar o meio ambiente da nossa cidade.
+        </p>
+
+        <h2 class="subtitulo">Qual o problema?</h2>
+
+        <div class="problemas">
+          <!-- termômetro -->
+          <div class="problema">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f8f3f" stroke-width="1.8" stroke-linecap="round">
+              <path d="M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0z"/>
+            </svg>
+            <p>Mudanças climáticas e aumento da temperatura.</p>
+          </div>
+
+          <!-- gota -->
+          <div class="problema">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f8f3f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>
+            </svg>
+            <p>Uso excessivo da água e falta de cuidado com o solo.</p>
+          </div>
+
+          <!-- folha -->
+          <div class="problema">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f8f3f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 19C5 9 11 5 20 4c0 9-4 15-13 15zM5 19l8-8"/>
+            </svg>
+            <p>Desmatamento e perda de áreas verdes.</p>
+          </div>
+        </div>
+
+        <div class="destaque">
+          Pequenas atitudes fazem uma grande diferença! Com a ajuda da tecnologia
+          e da participação da comunidade, conseguimos monitorar o ambiente e
+          criar soluções para um futuro mais sustentável.
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMO FUNCIONA ================= -->
+    <section id="como" class="como">
+      <div class="container">
+        <h2>Como funciona?</h2>
+        <p class="intro">Do sensor ao seu navegador, em quatro passos.</p>
+
+        <div class="passos">
+          <div class="passo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0z"/>
+            </svg>
+            <div>
+              <h3>Sensores ambientais</h3>
+              <p>O projeto utiliza o ESP32 e sensores para medir temperatura, umidade do ar e umidade do solo.</p>
+            </div>
+          </div>
+
+          <div class="passo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M2 9a15 15 0 0 1 20 0M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0"/>
+              <circle cx="12" cy="20" r="1"/>
+            </svg>
+            <div>
+              <h3>Dados em tempo real</h3>
+              <p>As informações são enviadas via Wi-Fi para um banco de dados e exibidas em um site.</p>
+            </div>
+          </div>
+
+          <div class="passo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M5 20v-6M12 20V6M19 20v-10"/>
+            </svg>
+            <div>
+              <h3>Painel de monitoramento</h3>
+              <p>No site, você pode acompanhar gráficos e ver a evolução das medições.</p>
+            </div>
+          </div>
+
+          <div class="passo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/>
+            </svg>
+            <div>
+              <h3>Alertas e dicas</h3>
+              <p>Quando os níveis estiverem fora do ideal, o sistema emite alertas e oferece orientações para o cuidado com o solo e a água.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desenho simples da placa ESP32 com os sensores.
+             Dá pra trocar por uma foto de verdade com <img src="..."> -->
+        <div class="hardware">
+          <svg viewBox="0 0 150 100" role="img" aria-label="Placa ESP32 e sensores">
+            <rect x="8" y="14" width="96" height="60" rx="6" fill="#16315c"/>
+            <rect x="40" y="22" width="40" height="28" rx="3" fill="#c9c9c9"/>
+            <rect x="92" y="60" width="34" height="28" rx="4" fill="#f1f1f1"/>
+            <path d="M128 40v52M138 40v52" stroke="#c9b27a" stroke-width="5" stroke-linecap="round"/>
+            <rect x="124" y="30" width="20" height="14" rx="2" fill="#222"/>
+          </svg>
+          <p>A tecnologia aliada à natureza para um futuro mais sustentável.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DICAS ================= -->
+    <section id="dicas">
+      <div class="container">
+        <h2>Dicas para um cotidiano mais verde</h2>
+
+        <div class="dicas">
+          <div class="dica">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>
+            </svg>
+            <div>
+              <h3>Economize água</h3>
+              <p>Evite vazamentos, reduza o tempo de banho e reaproveite a água da chuva.</p>
+            </div>
+          </div>
+
+          <div class="dica">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <circle cx="12" cy="9" r="6"/>
+              <path d="M12 15v6M9 21h6"/>
+            </svg>
+            <div>
+              <h3>Plante e preserve árvores</h3>
+              <p>Elas melhoram o ar, reduzem a temperatura e trazem mais vida para a cidade.</p>
+            </div>
+          </div>
+
+          <div class="dica">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7l3-4h4l3 4M17 17l3-4-2-3M8 20H5l-2-4 3-4"/>
+            </svg>
+            <div>
+              <h3>Separe o lixo corretamente</h3>
+              <p>Recicle e descarte resíduos eletrônicos em pontos de coleta da sua cidade.</p>
+            </div>
+          </div>
+
+          <div class="dica">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>
+            </svg>
+            <div>
+              <h3>Use a energia de forma consciente</h3>
+              <p>Desligue aparelhos que não estiverem em uso e prefira fontes renováveis.</p>
+            </div>
+          </div>
+
+          <div class="dica">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 19C5 9 11 5 20 4c0 9-4 15-13 15zM5 19l8-8"/>
+            </svg>
+            <div>
+              <h3>Valorize as áreas verdes</h3>
+              <p>Cuide das praças, parques e espaços naturais. Eles são essenciais para o equilíbrio ambiental.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAMADA FINAL ================= -->
+    <section id="acesse" class="secao-final">
+      <div class="container">
+        <div class="chamada">
+          <h2>Juntos podemos fazer a diferença!</h2>
+          <p>Preserve hoje, colha o amanhã. Acompanhe as medições da nossa cidade e saiba mais sobre o projeto.</p>
+          <!-- TODO: trocar o "#" pelo endereço real do site do projeto -->
+          <a class="botao" href="#">Acesse o site do projeto</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer>
+    <b>Natureza Inteligente</b>
+    Monitorar hoje, preservar sempre.<br>
+    Projeto de extensão universitária
+  </footer>
+
+</body>
+</html>
